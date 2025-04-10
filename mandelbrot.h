@@ -15,6 +15,6 @@ void DrawWindow            (sf::RenderWindow& window, sf::VertexArray& pixels);
 void PixelsDefault         (sf::VertexArray& pixels);
 void FillingPixels         (sf::VertexArray& pixels);
 
-void MandelbrotCalculation(sf::VertexArray& pixels, double x0, double y0, int xi, int yi);
+void MandelbrotCalculation(sf::VertexArray& pixels, double x0, double y0, int xi, int yi, int index);
 #endif
 
