@@ -54,7 +54,7 @@ void MandelbrotCalculation(sf::VertexArray& pixels, double x0, double y0, int xi
         calcs++;
     }
 
-    int index = xi + yi * WINDOW_LENGTH;
+    //int index = xi + yi * WINDOW_LENGTH;
     pixels[index].position = sf::Vector2f (xi, yi);
     pixels[index].color    = sf::Color(calcs * 18 % MAX_CALCS, calcs * 10 % MAX_CALCS, calcs * 15 % MAX_CALCS);
 }
