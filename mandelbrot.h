@@ -44,12 +44,12 @@ enum color
 
 enum scan_codes //TODO optimise scan_codes table
 {
-    BACK     = 10, //k
+    ZOOMMORE = 4,  //e
     ZOOMLESS = 16, //q
-    ZOOMMORE = 17, //r
     ZOOMOUT  = 18, //s
     ZOOMIN   = 22, //w
-    COLOR    = 26, //0
+    COLOR    = 27, //1
+    BACK     = 36, //Esc
     LEFT     = 71, //arrows:
     RIGHT    = 72,
     UP       = 73,
