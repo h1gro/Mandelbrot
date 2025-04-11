@@ -79,28 +79,24 @@ void PictureShiftZoom(struct window_t* win_param, int scan_code)
     {
         case LEFT:
         {
-            //view.move(-speed_of_the_shift, 0);
             win_param->horisontal_shift -= speed_of_the_shift / (CALIBR__ZOOM_PARAM * win_param->zoom);
             break;
         }
 
         case RIGHT:
         {
-            //view.move(speed_of_the_shift, 0);
             win_param->horisontal_shift += speed_of_the_shift / (CALIBR__ZOOM_PARAM * win_param->zoom);
             break;
         }
 
         case UP:
         {
-            //view.move(0, -speed_of_the_shift);
             win_param->vertical_shift -= speed_of_the_shift / (CALIBR__ZOOM_PARAM * win_param->zoom);
             break;
         }
 
         case DOWN:
         {
-            //view.move(0, speed_of_the_shift);
             win_param->vertical_shift += speed_of_the_shift / (CALIBR__ZOOM_PARAM * win_param->zoom);
             break;
         }
@@ -108,22 +104,12 @@ void PictureShiftZoom(struct window_t* win_param, int scan_code)
         case ZOOMIN:
         {
             win_param->zoom += ZOOM_CHANGE;
-
-            // win_param->horisontal_shift /= win_param->zoom;
-            // win_param->vertical_shift   /= win_param->zoom;
-            // view.move(0, 0);
             break;
         }
 
         case ZOOMOUT:
         {
             win_param->zoom -= ZOOM_CHANGE;
-
-            //am i need it?
-            //if (win_param->zoom < 0) {win_param->zoom = 1;}
-
-            // win_param->horisontal_shift /= sqrt(win_param->zoom);
-            // win_param->vertical_shift   /= sqrt(win_param->zoom);
             break;
         }
 
@@ -168,17 +154,18 @@ void DrawWindow(sf::RenderWindow& window, sf::VertexArray& pixels, sf::View& vie
 
     while (window.isOpen()) //while window is open
     {
-        gettimeofday(start, NULL);
+        gettimeofday(start, NULL); //start - recorded the current time of starting drawing a mandelbrote
 
         current_number_of_cadrs++;
 
-        Handler(window, view, win_param);
+        Handler(window, view, win_param); //processing event
 
         PixelsDefault(pixels, win_param); //black all
 
         FillingPixels(pixels, win_param);
 
-        gettimeofday(end, NULL);
+        gettimeofday(end, NULL); //end - recorded the current time of ending drawing a mandelbrote
+        //and after that - measure time of drawing
         current_number_of_cadrs = PrintFPS(start, end, current_number_of_cadrs);
 
         window.clear(); //clear content of the window and draw all window in black
