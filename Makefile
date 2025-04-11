@@ -11,30 +11,10 @@ flags = -D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ -Waggressive-loop
 -flto-odr-type-merging -fno-omit-frame-pointer -Wstack-usage=8192 -pie -fPIE -Werror=vla \
 -fsanitize=address,alignment,bool,bounds,enum,float-cast-overflow,float-divide-by-zero,integer-divide-by-zero,leak,nonnull-attribute,null,object-size,return,returns-nonnull-attribute,shift,signed-integer-overflow,undefined,unreachable,vla-bound,vptr
 
-#-------------------------------------------------------------------------------------------------------#
-
-# all: mandelbrot.out
-# 	./mandelbrot.out
-#
-# #mondelbrot: main.o
-# #g++ main.o $(flags) -o mondelbrot
-#
-# #mondelbrot:	main.cpp
-# #g++ -c $(flags) main.cpp -o main.out -lsfml-window -lsfml-system
-#
-# mandelbrot.out: main.o
-# 	g++ main.o mandelbrot.out -lsfml-graphics -lsfml-window -lsfml-system
-#
-# main.o: main.cpp
-# 	g++ -c -O3 main.cpp
-#
-# clean:
-# 	rm -rf *.o *.exe *.exe.log *.exe.log.dmp
-
 all: mandelbrot
 
-mandelbrot: main.cpp mandelbrot.h
-	g++ main.cpp -o mandelbrot.out -lsfml-graphics -lsfml-window -lsfml-system
+mandelbrot: main.cpp FillingPixels.cpp mandelbrot.h
+	g++ main.cpp FillingPixels.cpp -o mandelbrot.out -lsfml-graphics -lsfml-window -lsfml-system
 
 clean:
 	rm -rf *.o *.out
