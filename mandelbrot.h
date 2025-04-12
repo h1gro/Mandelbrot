@@ -42,7 +42,23 @@ enum color
     RED_COEF   = 18,
 };
 
-enum scan_codes //TODO optimise scan_codes table
+/*-------HOW TO CHANGE IMAGE--------
+PRESS W to increase scale
+PRESS S to decrease scale
+
+PRESS E to strongly increase scale
+PRESS Q to strongly decrease scale
+
+PRESS Esc to return default scale
+PRESS 1   to change colour of the picture
+
+PRESS ↑ to shift picture up
+PRESS ↓ to shift picture dowm
+PRESS → to shift picture right
+PRESS ← to shift picture left
+*/
+
+enum scan_codes
 {
     ZOOMMORE = 4,  //e
     ZOOMLESS = 16, //q
