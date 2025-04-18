@@ -25,6 +25,7 @@ enum modes
     ERROR  = -1,
     SIMPLE = 0,
     ARRAY  = 1,
+    INTRIN = 2,
 };
 
 enum win_parametres
@@ -73,7 +74,8 @@ enum scan_codes
     DOWN     = 74,
 };
 
-const int MAX_CALCS = 256;
+const int MAX_CALCS      = 256;
+const int VAL_ARRAY_SIZE = 4;
 
 const float ZOOM_CHANGE        = 1.10;
 const float CALIBR__ZOOM_PARAM = 100;

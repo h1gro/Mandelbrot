@@ -1,8 +1,6 @@
 #ifndef _FILLING_ARRAYS_
 #define _FILLING_ARRAYS_
 
-const int VAL_ARRAY_SIZE = 4;
-
 struct arrays_t
 {
     double x [VAL_ARRAY_SIZE]; //TODO че за бретто
