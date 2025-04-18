@@ -10,14 +10,6 @@
 #include <math.h>
 #include <sys/time.h>
 
-// struct window_t
-// {
-//     sf::VertexArray* pixels;
-//     sf::RenderWindow* window;
-//     int length;
-//     int weight;
-// };
-
 struct window_t
 {
     int   color_shift;
@@ -99,8 +91,8 @@ void PixelsDefault         (sf::VertexArray& pixels, struct window_t* win_param)
 void FillingPixels         (sf::VertexArray& pixels, struct window_t* win_param);
 void Handler               (sf::RenderWindow& window, sf::View& view, struct window_t* win_param);
 void StartUsersMode        (sf::VertexArray& pixels, struct window_t* win_param, modes users_mode);
-void PointAppropriation    (sf::VertexArray& pixels, struct window_t* win_param, int calcs, int x_curr, int y_curr, int index);
-void MandelbrotCalculation (sf::VertexArray& pixels, struct window_t* win_param, double x_first, double y_first, int x_curr, int y_curr, int index);
+void PointAppropriation    (sf::VertexArray& pixels, struct window_t* win_param, int calcs, int x_curr, int y_curr);
+void MandelbrotCalculation (sf::VertexArray& pixels, struct window_t* win_param, double x_first, double y_first, int x_curr, int y_curr);
 void DrawWindow            (sf::RenderWindow& window, sf::VertexArray& pixels, sf::View& view, struct window_t* win_param, struct timeval* start, struct timeval* end, modes users_mode);
 #endif
 
