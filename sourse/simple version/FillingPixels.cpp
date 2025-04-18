@@ -19,12 +19,12 @@ void FillingPixels(sf::VertexArray& pixels, struct window_t* win_param)
 
             index = x_curr + y_curr * win_param->length;
 
-            MandelbrotCalculation(pixels, win_param, x_first, y_first, x_curr, y_curr, index);
+            MandelbrotCalculation(pixels, win_param, x_first, y_first, x_curr, y_curr);
         }
     }
 }
 
-void MandelbrotCalculation(sf::VertexArray& pixels, struct window_t* win_param, double x_first, double y_first, int x_curr, int y_curr, int index)
+void MandelbrotCalculation(sf::VertexArray& pixels, struct window_t* win_param, double x_first, double y_first, int x_curr, int y_curr)
 {
     assert(&pixels);
     int calcs = 0;
@@ -38,10 +38,10 @@ void MandelbrotCalculation(sf::VertexArray& pixels, struct window_t* win_param, 
         calcs++;
     }
 
-    PointAppropriation(pixels, win_param, calcs, x_curr, y_curr, index);
+    PointAppropriation(pixels, win_param, calcs, x_curr, y_curr);
 }
 
-void PointAppropriation(sf::VertexArray& pixels, struct window_t* win_param, int calcs, int x_curr, int y_curr, int index)
+void PointAppropriation(sf::VertexArray& pixels, struct window_t* win_param, int calcs, int x_curr, int y_curr)
 {
     assert(&pixels);
     assert(win_param);
@@ -50,22 +50,10 @@ void PointAppropriation(sf::VertexArray& pixels, struct window_t* win_param, int
     int green = (calcs + win_param->color_shift) * GREEN_COEF % MAX_CALCS;
     int blue  = (calcs + win_param->color_shift) * BLUE_COEF  % MAX_CALCS;
 
+    int index = x_curr + y_curr * win_param->length;
+
     pixels[index].position = sf::Vector2f (x_curr, y_curr);
-    pixels[index].color    = sf::Color (red, green, blue);
-
-
-//     if (x_pos*x_pos + y_pos*y_pos >= 100)
-//     {
-//         double x_pos = CenterX(x_curr, win_param);
-//         double y_pos = CenterX(y_curr, win_param);
-//
-//         int red   = (calcs + win_param->color_shift) * RED_COEF   % MAX_CALCS;
-//         int green = (calcs + win_param->color_shift) * GREEN_COEF % MAX_CALCS;
-//         int blue  = (calcs + win_param->color_shift) * BLUE_COEF  % MAX_CALCS;
-//
-//         pixels[index].position = sf::Vector2f (x_curr, y_curr);
-//         pixels[index].color    = sf::Color (red, green, blue);
-//     }
+    pixels[index].color    = sf::Color    (red, green, blue);
 }
 
 

@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
     sf::View view = window.getDefaultView();
 
     PixelsDefault(pixels, &win_param);
-
+    printf("ну тут же я был\n");
     DrawWindow(window, pixels, view, &win_param, &start, &end, users_mode);
 
     return 0;
