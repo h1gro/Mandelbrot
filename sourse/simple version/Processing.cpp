@@ -1,5 +1,7 @@
 #include "mandelbrot.h"
+#include "intrin.h"
 #include "FillingArrays.h"
+#include <x86intrin.h>
 
 void DrawWindow(sf::RenderWindow& window, sf::VertexArray& pixels, sf::View& view, struct window_t* win_param, struct timeval* start, struct timeval* end, modes users_mode)
 {
@@ -11,9 +13,13 @@ void DrawWindow(sf::RenderWindow& window, sf::VertexArray& pixels, sf::View& vie
 
     int current_number_of_cadrs = 0;
 
-    //TODO rdtsc (частота тиков проца, её нужно будет уножить на тактовую частоту) - способ расчёта времени
     while (window.isOpen()) //while window is open
     {
+        uint64_t start1;
+        uint64_t end1;
+
+        start1 = __rdtsc();
+
         gettimeofday(start, NULL); //start - recorded the current time of starting drawing a mandelbrote
 
         current_number_of_cadrs++;
@@ -24,17 +30,21 @@ void DrawWindow(sf::RenderWindow& window, sf::VertexArray& pixels, sf::View& vie
 
         StartUsersMode(pixels, win_param, users_mode);
 
-        gettimeofday(end, NULL); //end - recorded the current time of ending drawing a mandelbrote
         //and after that - measure time of drawing
-        current_number_of_cadrs = PrintFPS(start, end, current_number_of_cadrs);
-
+        if (current_number_of_cadrs == 10)
+        {
+            current_number_of_cadrs = PrintFPS(start, end, current_number_of_cadrs);
+            end1 = __rdtsc();
+            printf("rdtsc FPS: %.9f\n", (2.7e9 * 10) / (end1 - start1));
+            current_number_of_cadrs = 0;
+        }
         window.clear(); //clear content of the window and draw all window in black
         window.draw(pixels);
         window.display();
     }
 }
 
-//TODO git repo in include, src, examples, build и т.д. .gitignore
+//TODO .gitignore
 //TODO -O3 -O0 -O2 in make
 void PictureShiftZoom(struct window_t* win_param, int scan_code)
 {
@@ -126,6 +136,12 @@ void StartUsersMode(sf::VertexArray& pixels, struct window_t* win_param, modes u
             break;
         }
 
+        case INTRIN:
+        {
+            FillingIntrin(pixels, win_param);
+            break;
+        }
+
         default:    perror("unexpectable value of users mode"
                            "(error somewhere in appropriation users_mode)\n");
     }
@@ -185,9 +201,19 @@ int PrintFPS(struct timeval* start, struct timeval* end, int cadrs)
     assert(start);
     assert(end);
 
-    long sec  = end->tv_sec - start->tv_sec;
-    long msec = end->tv_usec - start->tv_usec;
-    printf("FPS: %5lf\n", cadrs / (double)(sec + msec * 1E-6));
+    if (cadrs == 10)
+    {
+        gettimeofday(end, NULL); //end - recorded the current time of ending drawing a mandelbrote
 
-    return 0;
+        long sec  = end->tv_sec - start->tv_sec;
+        long msec = end->tv_usec - start->tv_usec;
+        printf("FPS: %5lf\n", cadrs / (double)(sec + msec * 1E-6));
+
+        return 0;
+    }
+
+    else
+    {
+        return cadrs;
+    }
 }
