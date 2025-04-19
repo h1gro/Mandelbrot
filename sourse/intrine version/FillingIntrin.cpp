@@ -54,14 +54,12 @@ void BatchProc(sf::VertexArray& pixels, struct window_t* win_param, __m128 x0, _
         int out_mask = _mm_movemask_ps(_mm_cmpge_ps(_mm_add_ps(_mm_mul_ps(x, x), _mm_mul_ps(y, y)), circle_size));
         int rezult   = out_mask & (~id1);
 
-        //fprintf(stderr, "want to drawing\n");
         if (rezult)
         {
             for (int i = 0; i < VAL_ARRAY_SIZE; i++)
             {
                 if ((rezult & (1 << i)))
                 {
-                    //fprintf(stderr, "drawing\n");
                     PointAppropriation(pixels, win_param, calcs, x_curr + i, y_curr);
                     id1 |= (1 << i);
                 }
@@ -98,14 +96,12 @@ int BatchMandCalc(sf::VertexArray& pixels, struct window_t* win_param, int* id1,
     // int out_mask = _mm_movemask_ps(_mm_cmpge_ps(_mm_add_ps(_mm_mul_ps(x, x), _mm_mul_ps(y, y)), circle_size));
     // int rezult   = out_mask & (~*id1);
 
-    //fprintf(stderr, "want to drawing\n");
     // if (rezult)
     // {
     //     for (int i = 0; i < VAL_ARRAY_SIZE; i++)
     //     {
     //         if ((rezult & (1 << i)))
     //         {
-    //             //fprintf(stderr, "drawing\n");
     //             PointAppropriation(pixels, win_param, calcs, x_curr + i, y_curr);
     //             *id1 |= (1 << i);
     //         }
