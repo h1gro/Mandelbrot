@@ -6,7 +6,7 @@ A project for visualizing the Mandelbrot set using the SFML graphics library in 
 
 [![SFML](https://img.shields.io/badge/SFML-2.5.1-blue.svg)](https://www.sfml-dev.org/)
 
-## 📋 About
+## 📋 About Task
 
 The Mandelbrot set is a fractal defined by complex number iterations. This project implements:
 - Interactive fractal visualization
@@ -16,7 +16,7 @@ The Mandelbrot set is a fractal defined by complex number iterations. This proje
 - PNG image saving
 - View reset functionality
 
-## Optimization
+## Optimizations and Versions
 
 At this project we used GCC optimizations flags: -O1, -O2, -O3. Also there are 3 different vesions of realizations (gradation by optimization): simple version, arrays version and intrin version.
 
@@ -37,6 +37,16 @@ info about intrinsisc you can find there:
 https://www.laruence.com/sse/#expand=4929,133,4929,0,5022,951,4929&text=_mm_move
 http://www.ccfit.nsu.ru/~kireev/lab4/lab4intr.htm
 
+## FPS
+
+The project of comparing between optimizations is FPS (number of cards per second). We measure FPS with assem intrin __rdtsc() every 10 cadrs.
+These are the table of comparing FPS in different versions and with different optimization flags:
+
+| Method     |   -O1   |   -O2   |   -O3   |
+|------------|---------|---------|---------|
+| **simple** | 165.80  | X.XX    | X.XX    |
+| **array**  | X.XX    | X.XX    | X.XX    |
+| **intrin** | X.XX    | X.XX    | X.XX    |
 
 ## 🛠️ Installation
 
