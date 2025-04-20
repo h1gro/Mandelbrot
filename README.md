@@ -44,9 +44,9 @@ These are the table of comparing FPS in different versions and with different op
 
 | Method     |   -O1   |   -O2   |   -O3   |
 |------------|---------|---------|---------|
-| **simple** | 165.80  | X.XX    | X.XX    |
-| **array**  | X.XX    | X.XX    | X.XX    |
-| **intrin** | X.XX    | X.XX    | X.XX    |
+| **simple** | 165.80  | 104.15  |  95.85  |
+| **array**  | 177.97  | 124.31  |  280.83 |
+| **intrin** | 191.69  | 196.25  |  419.35 |
 
 ## 🛠️ Installation
 
