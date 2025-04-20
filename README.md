@@ -1,11 +1,10 @@
-# 🌀 Mandelbrot Set Visualizer
+# 🌀 Mandelbrot
 
-![Mandelbrot Set Example](https://github.com/h1gro/Mandelbrot/screenshots/image.png)
+![Mandelbrot Set Example](https://github.com/h1gro/Mandelbrot/blob/main/screenshots/image.png)
 
 A project for visualizing the Mandelbrot set using the SFML graphics library in C++. Allows exploring the fractal with zooming, color scheme customization, and image saving capabilities.
 
 [![SFML](https://img.shields.io/badge/SFML-2.5.1-blue.svg)](https://www.sfml-dev.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 📋 About
 
