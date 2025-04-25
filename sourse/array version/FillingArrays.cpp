@@ -1,10 +1,10 @@
-#include "mandelbrot.h"
+#include "Mandelbrot.h"
 #include "FillingArrays.h"
 
 void FillingArrays(sf::VertexArray& pixels, struct window_t* win_param)
 {
-    assert(&pixels);
-    assert(win_param);
+    // assert(&pixels);
+    // assert(win_param);
 
     struct arrays_t coords = {};
 
@@ -13,7 +13,7 @@ void FillingArrays(sf::VertexArray& pixels, struct window_t* win_param)
 
     for (int y_curr = 0; y_curr < win_param->weigth; y_curr++)
     {
-        coords.y0[VAL_ARRAY_SIZE] = {};//TODO че за бретто
+        coords.y0[VAL_ARRAY_SIZE] = {};
         y_first = CenterY(y_curr, win_param);
 
         for (int i = 0; i < VAL_ARRAY_SIZE; i++)
@@ -37,8 +37,8 @@ void FillingArrays(sf::VertexArray& pixels, struct window_t* win_param)
 
 void CalcsArraysMandelbrot(sf::VertexArray& pixels, struct window_t* win_param, struct arrays_t* coords, int x_curr, int y_curr)
 {
-    assert(&pixels);
-    assert(win_param);
+    // assert(&pixels);
+    // assert(win_param);
 
     int identificator = 0, calcs = 0, flag = 0;
     double old_x = 0;
@@ -70,7 +70,7 @@ void CalcsArraysMandelbrot(sf::VertexArray& pixels, struct window_t* win_param, 
 int CurrentCalcs (struct arrays_t* coords, int i, int* identificator)
 {
     int flag = 0;
-    double old_x   = 0;
+    double old_x = 0;
 
     old_x = coords->x[i];
     coords->x[i] = coords->x[i] * coords->x[i] - coords->y[i] * coords->y[i] + coords->x0[i];
