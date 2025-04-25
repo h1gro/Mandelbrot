@@ -16,9 +16,15 @@ The Mandelbrot set is a fractal defined by complex number iterations. This proje
 - PNG image saving
 - View reset functionality
 
+## Image Changing
+
+You can move into the window? and changing size and color of the picture:
+
+Comand | Key
+
 ## Optimizations and Versions
 
-At this project we used GCC optimizations flags: -O1, -O2, -O3. Also there are 3 different vesions of realizations (gradation by optimization): simple version, arrays version and intrin version.
+At this project we used GCC optimizations flags: -O1, -O2, -O3. But for the experiment we look in -O0 (with out optimization) and -O3 (the most effective optimization). Also there are 3 different vesions of realizations (gradation by optimization): simple version, arrays version and intrin version.
 
 ### 1. Simple version
 
@@ -39,14 +45,14 @@ http://www.ccfit.nsu.ru/~kireev/lab4/lab4intr.htm
 
 ## FPS
 
-The project of comparing between optimizations is FPS (number of cards per second). We measure FPS with assem intrin __rdtsc() every 10 cadrs.
+The project of comparing between optimizations is FPS (number of cards per second). We measure FPS with assem intrin __rdtsc() every cadr.
 These are the table of comparing FPS in different versions and with different optimization flags:
 
-| Method     |   -O1   |   -O2   |   -O3   |
-|------------|---------|---------|---------|
-| **simple** | 165.80  | 104.15  |  95.85  |
-| **array**  | 177.97  | 124.31  |  280.83 |
-| **intrin** | 191.69  | 196.25  |  419.35 |
+|   Method   |   -O0   |   -O3   |
+|------------|---------|---------|
+| **simple** |  9.79   |  16.12  |
+| **array**  |  5.51   |  26.75  |
+| **intrin** |  11.68  |  40.10  |
 
 ## 🛠️ Installation
 
