@@ -1,9 +1,9 @@
-#include "mandelbrot.h"
+#include "Mandelbrot.h"
 
-int main(int argc, char* argv[])
+int main(int argc, const char* argv[])
 {
     struct window_t win_param = {};
-    struct timeval start, end = {};
+    //struct timeval start, end = {};
 
     modes users_mode = DefineMode(argv);
 
@@ -12,20 +12,20 @@ int main(int argc, char* argv[])
     WindowParamsCtor(&win_param);
     //init array of pixels and window for picture
     sf::RenderWindow window(sf::VideoMode({win_param.length, win_param.weigth}), "Mandelbrot");
-    sf::VertexArray pixels(sf::Points, win_param.length * win_param.weigth);
+    sf::VertexArray pixels (sf::Points, win_param.length * win_param.weigth);
 
     sf::View view = window.getDefaultView();
 
     PixelsDefault(pixels, &win_param);
-    printf("ну тут же я был\n");
-    DrawWindow(window, pixels, view, &win_param, &start, &end, users_mode);
+
+    DrawWindow(window, pixels, view, &win_param, users_mode);
 
     return 0;
 }
 
-modes DefineMode(char* argv[])
+modes DefineMode(const char* argv[])
 {
-    assert(argv);
+    // assert(argv);
 
     if (!strcmp(argv[1], "simple"))
     {
@@ -37,6 +37,11 @@ modes DefineMode(char* argv[])
         return ARRAY;
     }
 
+    else if(!strcmp(argv[1], "intrin"))
+    {
+        return INTRIN;
+    }
+
     else
     {
         perror("error mode!\n");
@@ -46,7 +51,7 @@ modes DefineMode(char* argv[])
 
 void WindowParamsCtor(struct window_t* win_param)
 {
-    assert(win_param);
+    // assert(win_param);
 
     win_param->length = WINDOW_LENGTH;
     win_param->weigth = WINDOW_WEIGHT;

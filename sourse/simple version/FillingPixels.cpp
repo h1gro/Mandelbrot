@@ -1,10 +1,10 @@
-#include "mandelbrot.h"
+#include "Mandelbrot.h"
 #include "FillingArrays.h"
 
 void FillingPixels(sf::VertexArray& pixels, struct window_t* win_param)
 {
-    assert(&pixels);
-    assert(win_param);
+    // assert(&pixels);
+    // assert(win_param);
 
     double y_first = 0, x_first = 0;
     int index = 0;
@@ -26,7 +26,7 @@ void FillingPixels(sf::VertexArray& pixels, struct window_t* win_param)
 
 void MandelbrotCalculation(sf::VertexArray& pixels, struct window_t* win_param, double x_first, double y_first, int x_curr, int y_curr)
 {
-    assert(&pixels);
+    // assert(&pixels);
     int calcs = 0;
     double x = x_first, y = y_first, old_x = 0;
 
@@ -39,21 +39,6 @@ void MandelbrotCalculation(sf::VertexArray& pixels, struct window_t* win_param, 
     }
 
     PointAppropriation(pixels, win_param, calcs, x_curr, y_curr);
-}
-
-void PointAppropriation(sf::VertexArray& pixels, struct window_t* win_param, int calcs, int x_curr, int y_curr)
-{
-    assert(&pixels);
-    assert(win_param);
-
-    int red   = (calcs + win_param->color_shift) * RED_COEF   % MAX_CALCS;
-    int green = (calcs + win_param->color_shift) * GREEN_COEF % MAX_CALCS;
-    int blue  = (calcs + win_param->color_shift) * BLUE_COEF  % MAX_CALCS;
-
-    int index = x_curr + y_curr * win_param->length;
-
-    pixels[index].position = sf::Vector2f (x_curr, y_curr);
-    pixels[index].color    = sf::Color    (red, green, blue);
 }
 
 
