@@ -3,12 +3,11 @@
 
 struct arrays_t
 {
-    double x [VAL_ARRAY_SIZE]; //TODO че за бретто
+    double x [VAL_ARRAY_SIZE];
     double y [VAL_ARRAY_SIZE];
     double y0[VAL_ARRAY_SIZE];
     double x0[VAL_ARRAY_SIZE];
 };
-
 
 const int MAGIC_CONST_RED   = 5;
 const int MAGIC_CONST_GREEN = 10;
